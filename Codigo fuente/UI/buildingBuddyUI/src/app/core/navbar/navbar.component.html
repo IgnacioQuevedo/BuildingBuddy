@@ -1,0 +1,135 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" *ngIf="userConnected">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['home']">Building Buddy</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['home']">Home</a>
+                </li>
+                <ng-container *ngIf="userConnected.userRole === SystemUserRoleEnumValues.Admin ">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Admin Features
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" [routerLink]="['invitations/list']">Invitation Section</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" [routerLink]="['categories/create']">Categories Section</a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" [routerLink]="['admins/create']">Admin Section</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" [routerLink]="['managers/list']">Manager Section</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" [routerLink]="['reports/list']">Reports Section</a></li>
+                        </ul>
+                    </li>
+                </ng-container>
+
+                <ng-container *ngIf="userConnected.userRole === SystemUserRoleEnumValues.ConstructionCompanyAdmin">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Construction Company Admin Features
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li><a class="dropdown-item" [routerLink]="['construction-companies/list']">Construction
+                                    Company Section</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" [routerLink]="['buildings/list']">Building Section</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" [routerLink]="['constructionCompanyAdmin/create']">Construction
+                                    Company Admin
+                                    Section</a></li>
+                            <li>
+                        </ul>
+                    </li>
+
+
+                </ng-container>
+
+
+
+                <ng-container *ngIf="userConnected.userRole === SystemUserRoleEnumValues.Manager">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Manager Features
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li><button class="dropdown-item" (click)="goToBuildingCustomList()">Building Section</button></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            
+                            <li><a class="dropdown-item" [routerLink]="['reports/list']">Reports Section</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" [routerLink]="['maintenance-requests/list']">Maintenance Requests Section</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li><a class="dropdown-item" [routerLink]="['request-handler/create']">Request Handlers Section</a></li>
+                        </ul>
+                    </li>
+
+
+                </ng-container>
+
+                <ng-container *ngIf="userConnected.userRole === SystemUserRoleEnumValues.RequestHandler ">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Request Handler Features
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" [routerLink]="['maintenance-requests/list-by-request-handler']">Maintenance Requests Section</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+
+            </ul>
+
+        </div>
+        <button class="btn btn-outline-danger ms-3 " (click)="logout()"> Logout </button>
+    </div>
+</nav>

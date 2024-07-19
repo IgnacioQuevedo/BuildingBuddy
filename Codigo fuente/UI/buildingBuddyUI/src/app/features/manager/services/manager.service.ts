@@ -31,7 +31,7 @@ export class ManagerService {
 
   deleteManager(managerId: string)  : Observable<void>
   {
-    return this.http.delete<void>(`${environment.apiBaseUrl}/api/v2/managers?addAuth=true/${managerId}?addAuth=true`)
+    return this.http.delete<void>(`${environment.apiBaseUrl}/api/v2/managers/${managerId}?addAuth=true`)
   }
 
 

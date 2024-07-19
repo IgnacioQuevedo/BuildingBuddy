@@ -26,7 +26,7 @@ export class InvitationService {
 
   deleteInvitation(id: string) : Observable<void>
   {
-    return this.http.delete<void>(`${environment.apiBaseUrl}/api/v2/invitations?addAuth=true/${id}`)
+    return this.http.delete<void>(`${environment.apiBaseUrl}/api/v2/invitations/${id}?addAuth=true`)
   }
 
   getInvitationById(id:string) : Observable<Invitation>
